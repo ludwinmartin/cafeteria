@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Categoria</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Cafeteria</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="navbar-collapse collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Categoria</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/productos">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/roles">Roles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/usuarios">Usuarios</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) {%>
+                        <% for (var i = 0; i < data.length; i++) { %>
+                            <tr>
+                                <td><%= data[i].idCategoria %></td>
+                                <td><%= data[i].nombreCategoria %></td>
+                                <td>
+                                    <a href="/delete/<%= data[i].idCategoria %>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="/update/<%= data[i].idCategoria %>" class="btn btn-info btn-sm">Editar</a>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class = "card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <input type="text" name="nombreCategoria" placeholder="Nombre" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar Registro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

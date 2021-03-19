@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Categoria</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a href="/" class="navbar-brand">Cafeteria</a>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/update/<%= data.idCategoria %> " method="post">
+                            <div class="form-group">
+                                <input type="text" name="nombreCategoria" value="<%= data.nombreCategoria %> " class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Guardar Registro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
