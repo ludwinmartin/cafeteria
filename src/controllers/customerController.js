@@ -1,5 +1,5 @@
 const controller = {};
-//----------------------------------
+//---------------------------------- Categoria
 //Listar - Leer
 controller.list = (req, res) => {
     req.getConnection((err, conn) =>{
@@ -56,7 +56,7 @@ controller.update = (req, res) => {
         })
     });
 };
-//----------------------------------
+//---------------------------------- Producto
 
 //Listar - Leer
 controller.listProductos = (req, res) => {
@@ -82,5 +82,154 @@ controller.saveProductos = (req, res) => {
         })
     })
 };
+
+//Eliminar
+controller.deleteProductos = (req, res) => {
+    const { idProducto } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM producto WHERE idProducto = ?', [idProducto], (err, rows) => {
+            res.redirect('/productos');
+        });
+    })
+};
+
+//Editar y Actualizar
+controller.editProductos = (req, res) => {
+    const { idProducto } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM producto WHERE idProducto = ?', [idProducto], (err, producto) =>{
+            res.render('producto_edit', {
+                data: producto[0]
+            });
+        });
+    });
+};
+
+controller.updateProductos = (req, res) => {
+    const { idProducto } = req.params;
+    const newProducto = req.body;
+    req.getConnection((req, conn) => {
+        conn.query('UPDATE producto set ? WHERE idProducto = ?', [newProducto, idProducto], (err, rows) => {
+            res.redirect('/productos');
+        })
+    });
+};
+
+//---------------------------------- Rol
+//Listar - Leer
+controller.listRoles = (req, res) => {
+    req.getConnection((err, conn) =>{
+        conn.query('SELECT * FROM rol', (err, rol) =>{
+            if (err){
+                res.json(err);
+            }
+            res.render('rol', {
+                data: rol
+            });
+        });
+    });
+};
+
+//Guardar
+controller.saveRoles = (req, res) => {
+    const data = req.body;
+    req.getConnection((err, conn) =>{
+        conn.query('INSERT INTO rol set ?', [data], (err, rol) =>{
+            console.log(rol);
+            res.redirect('/roles');
+        })
+    })
+};
+
+//Eliminar
+controller.deleteRoles = (req, res) => {
+    const { idRol } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM rol WHERE idRol = ?', [idRol], (err, rows) => {
+            res.redirect('/roles');
+        });
+    })
+};
+
+//Editar y Actualizar
+controller.editRoles = (req, res) => {
+    const { idRol } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM rol WHERE idRol = ?', [idRol], (err, rol) =>{
+            res.render('rol_edit', {
+                data: rol[0]
+            });
+        });
+    });
+};
+
+controller.updateRoles = (req, res) => {
+    const { idRol } = req.params;
+    const newRol = req.body;
+    req.getConnection((req, conn) => {
+        conn.query('UPDATE rol set ? WHERE idRol = ?', [newRol, idRol], (err, rows) => {
+            res.redirect('/roles');
+        })
+    });
+};
+
+//----------------------------------
+//Listar - Leer
+controller.listUsuarios = (req, res) => {
+    req.getConnection((err, conn) =>{
+        conn.query('SELECT * FROM usuario', (err, usuario) =>{
+            if (err){
+                res.json(err);
+            }
+            res.render('usuario', {
+                data: usuario
+            });
+        });
+    });
+};
+
+//Guardar
+controller.saveUsuarios = (req, res) => {
+    const data = req.body;
+    req.getConnection((err, conn) =>{
+        conn.query('INSERT INTO usuario set ?', [data], (err, usuario) =>{
+            console.log(usuario);
+            res.redirect('/usuarios');
+        })
+    })
+};
+
+//Eliminar
+controller.deleteUsuarios = (req, res) => {
+    const { idUsuario } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM usuario WHERE idUsuario = ?', [idUsuario], (err, rows) => {
+            res.redirect('/usuarios');
+        });
+    })
+};
+
+//Editar y Actualizar
+controller.editUsuarios = (req, res) => {
+    const { idUsuario } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM usuario WHERE idUsuario = ?', [idUsuario], (err, usuario) =>{
+            res.render('usuario_edit', {
+                data: usuario[0]
+            });
+        });
+    });
+};
+
+controller.updateUsuarios = (req, res) => {
+    const { idUsuario } = req.params;
+    const newUsuario = req.body;
+    req.getConnection((req, conn) => {
+        conn.query('UPDATE usuario set ? WHERE idUsuario = ?', [newUsuario, idUsuario], (err, rows) => {
+            res.redirect('/usuarios');
+        })
+    });
+};
+
 //----------------------------------
 module.exports = controller

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Producto</title>
+    <title>Usuario</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
 </head>
 <body>
@@ -17,13 +17,13 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Categoria</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/productos">Productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/roles">Roles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="/usuarios">Usuarios</a>
             </li>
           </ul>
@@ -32,16 +32,18 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-7">
+        <div class="col-md-12">
 
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nombre</th>
-                        <th>Existencia</th>
-                        <th>Precio Unidad</th>
-                        <th>Id Categoria</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>Contraseña</th>
+                        <th>Rol</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -49,14 +51,16 @@
                     <% if (data) {%>
                         <% for (var i = 0; i < data.length; i++) { %>
                             <tr>
-                                <td><%= data[i].idProducto %></td>
-                                <td><%= data[i].nombreProducto %></td>
-                                <td><%= data[i].existenciaProducto %></td>
-                                <td><%= data[i].precioUnidadProducto %></td>
-                                <td><%= data[i].idCategoria %></td>
+                                <td><%= data[i].idUsuario %></td>
+                                <td><%= data[i].nombresUsuario %></td>
+                                <td><%= data[i].apellidosUsuario %></td>
+                                <td><%= data[i].telefonoUsuario %></td>
+                                <td><%= data[i].correoUsuario %></td>
+                                <td><%= data[i].contrasenaUsuario %></td>
+                                <td><%= data[i].idRol %></td>
                                 <td>
-                                    <a href="/productos/deleteProductos/<%= data[i].idProducto %>" class="btn btn-danger btn-sm">Eliminar</a>
-                                    <a href="/productos/updateProductos/<%= data[i].idProducto %>" class="btn btn-info btn-sm">Editar</a>
+                                    <a href="/usuarios/deleteUsuarios/<%= data[i].idUsuario %>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="/usuarios/updateUsuarios/<%= data[i].idUsuario %>" class="btn btn-info btn-sm">Editar</a>
                                 </td>
                             </tr>
                         <% } %>
@@ -69,18 +73,24 @@
         <div class="col-md-5">
             <div class="card">
                 <div class = "card-body">
-                    <form action="/productos/addProductos" method="post">
+                    <form action="/usuarios/addUsuarios" method="post">
                         <div class="form-group">
-                            <input type="text" name="nombreProducto" placeholder="Nombre Producto" class="form-control">
+                            <input type="text" name="nombresUsuario" placeholder="Nombres" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="existenciaProducto" placeholder="Existencia Producto" class="form-control">
+                            <input type="text" name="apellidosUsuario" placeholder="Apellidos" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="precioUnidadProducto" placeholder="Precio Unidad Producto" class="form-control">
+                            <input type="text" name="telefonoUsuario" placeholder="Telefono" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="idCategoria" placeholder="Id Categoria" class="form-control">
+                            <input type="text" name="correoUsuario" placeholder="Correo Electronico" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="contrasenaUsuario" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="idRol" placeholder="Id del Rol" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-success">Guardar Registro</button>
                     </form>
