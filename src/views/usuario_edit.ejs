@@ -7,7 +7,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a href="/productos" class="navbar-brand">Cafeteria</a>
+        <a href="/productos" class="navbar-brand">Cafetería</a>
     </nav>
 
     <div class="container mt-5">
@@ -17,21 +17,27 @@
                     <div class="card-body">
                         <form action="/usuarios/updateUsuarios/<%= data.idUsuario %> " method="post">
                             <div class="form-group">
+                                Nombres
                                 <input type="text" name="nombresUsuario" value="<%= data.nombresUsuario %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Apellidos
                                 <input type="text" name="apellidosUsuario" value="<%= data.apellidosUsuario %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Teléfono
                                 <input type="text" name="telefonoUsuario" value="<%= data.telefonoUsuario %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Correo Electronico
                                 <input type="text" name="correoUsuario" value="<%= data.correoUsuario %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Contraseña
                                 <input type="text" name="contrasenaUsuario" value="<%= data.contrasenaUsuario %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Id de Rol
                                 <input type="text" name="idRol" value="<%= data.idRol %>" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-success">Guardar Registro</button>

@@ -7,7 +7,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a href="/productos" class="navbar-brand">Cafeteria</a>
+        <a href="/productos" class="navbar-brand">Cafetería</a>
     </nav>
 
     <div class="container mt-5">
@@ -17,15 +17,19 @@
                     <div class="card-body">
                         <form action="/productos/updateProductos/<%= data.idProducto %> " method="post">
                             <div class="form-group">
+                                Nombre
                                 <input type="text" name="nombreProducto" value="<%= data.nombreProducto %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Existencia
                                 <input type="text" name="existenciaProducto" value="<%= data.existenciaProducto %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Precio Unidad
                                 <input type="text" name="precioUnidadProducto" value="<%= data.precioUnidadProducto %>" class="form-control">
                             </div>
                             <div class="form-group">
+                                Id de Categoria
                                 <input type="text" name="idCategoria" value="<%= data.idCategoria %>" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-success">Guardar Registro</button>
